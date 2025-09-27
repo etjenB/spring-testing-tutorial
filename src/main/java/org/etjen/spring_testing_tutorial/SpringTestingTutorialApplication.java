@@ -10,24 +10,7 @@ import org.springframework.context.ApplicationContext;
 public class SpringTestingTutorialApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(SpringTestingTutorialApplication.class, args);
-        StudentRepository repository = context.getBean(StudentRepository.class);
-
-        Student student = Student.builder()
-                .firstName("Lea")
-                .lastName("Lion")
-                .email("lea.lion@email.com")
-                .build();
-
-        repository.save(student);
-
-        //Student foundStudent = repository.findById(student.getId()).get();
-        //Student foundStudent = repository.findByEmail(student.getEmail()).get();
-        Student foundStudent = repository.findByFullName(student.getFirstName(), student.getLastName()).get();
-
-        System.out.println("\n\n----------------\n"+foundStudent+"\n-------------------------\n\n");
-
-        repository.delete(student);
+		SpringApplication.run(SpringTestingTutorialApplication.class, args);
 	}
 
 }

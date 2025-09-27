@@ -4,7 +4,6 @@ import org.etjen.spring_testing_tutorial.domain.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.NativeQuery;
 import org.springframework.data.repository.query.Param;
-
 import java.util.Optional;
 
 public interface StudentRepository extends JpaRepository<Student, Integer> {
