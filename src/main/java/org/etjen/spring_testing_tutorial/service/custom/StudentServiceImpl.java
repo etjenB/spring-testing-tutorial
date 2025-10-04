@@ -3,10 +3,10 @@ package org.etjen.spring_testing_tutorial.service.custom;
 import lombok.RequiredArgsConstructor;
 import org.etjen.spring_testing_tutorial.domain.Student;
 import org.etjen.spring_testing_tutorial.exception.*;
+import org.etjen.spring_testing_tutorial.infrastructure.EmailService;
 import org.etjen.spring_testing_tutorial.repository.StudentRepository;
 import org.etjen.spring_testing_tutorial.service.StudentService;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
+    private final EmailService emailService;
 
     @Override
     public List<Student> getAllStudents() {
@@ -55,6 +56,7 @@ public class StudentServiceImpl implements StudentService {
             throw new LastNameLengthException(minLength, maxLength);
         }
 
+        emailService.sendEmail(student.getEmail(), "Welcome!", "Welcome new student and happy studies.");
         return studentRepository.save(student);
     }
 }
