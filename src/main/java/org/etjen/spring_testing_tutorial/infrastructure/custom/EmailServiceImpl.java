@@ -1,7 +1,9 @@
 package org.etjen.spring_testing_tutorial.infrastructure.custom;
 
 import org.etjen.spring_testing_tutorial.infrastructure.EmailService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EmailServiceImpl implements EmailService {
 
     @Override
